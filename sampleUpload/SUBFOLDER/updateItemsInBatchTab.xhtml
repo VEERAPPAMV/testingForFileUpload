@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+      <script type="text/javascript">
+	jQuery(document).ready(function() {
+          
+          document.getElementById("batchReviewForm:updateItemsListTableId:SALL1").checked=false;
+
+    	});
+	 	 function selectALLItems(){
+		 	
+			if(!document.getElementById("batchReviewForm:updateItemsListTableId:SALL1").checked){
+				document.getElementById("batchReviewForm:updateItemsListTableId:SALL1").checked=false;
+				return true;
+			}
+			if(confirm("Checking this will select all items in this tab")){
+				document.getElementById("batchReviewForm:updateItemsListTableId").checked=true;
+				return true;
+			 }else{
+				document.getElementById("batchReviewForm:updateItemsListTableId").checked=false;
+				return false;
+			 }
+		 }
+		</script>
+
+		<script type="text/javascript"> 
+			function checkAllChkBoxPages(){
+				var idString,i;
+				if(document.getElementById('batchReviewForm:updateItemsListTableId:SALL1').checked==true){
+					 for (i = 0; i &lt; 100; i++) {
+						idString = "batchReviewForm:updateItemsListTableId:"+ i +":ITMSLCT1";
+						document.getElementById(idString).checked=true;
+					}
+					 return true;
+				}	
+				
+			}	
+		</script>
+      <div class="tabContentWrap">
+      		<h:outputText id="addNewWrkBookMesInUp" value="#{itemAction.saveMessage1}" style="color:#{itemAction.messageColor}" />					
+			<h:outputText  value="#{dataSyncAction.saveMessage1}" id="saveMassageInUp" style="color:#{dataSyncAction.messageColor}; " escape="false"/>
+       		<table>
+		   		<tr>
+		   		<a4j:outputPanel id="UPWbimportPanelId">
+		   			<td>
+						<h:outputLink value="#" id="UPLink" >
+							<a4j:commandButton value="#{localeValue.addNewWorkBook}" id="UpButtonId"  image="/images/small/add.png" title="#{localeValue.addNwWrBk}" >
+							</a4j:commandButton>
+							<rich:componentControl for="workBookPanel" attachTo="UPLink,UpButtonId" operation="show" event="onclick" />
+						</h:outputLink>
+						<rich:spacer width="5px"></rich:spacer>
+					</td>	
+		   			<td>
+		   			<h:selectOneMenu style="width:200px;" id="UpStoredWBid" defaultLabel="- #{localeValue.select} -" value="#{dataSyncAction.workBookId}">
+				     			<f:selectItem itemValue="-1" itemLabel="- #{localeValue.selectWorkbook} -" />	 		
+					 		<f:selectItems   value="#{sessionUtilBean.workBookList}" var="wb"	itemLabelEscaped="true"	 		
+					 		itemLabel="#{wb.workBookName} (#{wb.noOfItems})" itemValue="#{wb.workBookId}" />
+	     			</h:selectOneMenu>
+	     			<rich:spacer width="20px"></rich:spacer>
+	     			</td>
+	     			<td>
+	     				<a4j:commandButton id="UpImportAllItemsToworkbook" value="#{localeValue.importAllExistingItemsToWorkbook}" action="#{dataSyncAction.importBatchItemsToWorkBook}"  reRender="saveMassageInUp,UpImportSelectedItemsToworkbook,UpStoredWBid,importBatchPollingForm1,UpImportAllItemsToworkbook" 
+	     				onclick="document.getElementById('batchReviewForm:saveMassageInUp').style.display = 'none';document.getElementById('batchReviewForm:addNewWrkBookMesInUp').style.display = 'none';this.disabled=true" disabled="#{!sessionUtilBean.enableCommandButton || sessionUtilBean.importBatchItemsToWorkBookStatusInfo.pollEnabled}"/>
+				 		<rich:spacer width="20px"></rich:spacer>
+				 	</td>
+				 	<td>
+	     				<a4j:commandButton id="UpImportSelectedItemsToworkbook" value="#{localeValue.importSelectedItemsToWorkbook}"  action="#{dataSyncAction.importSelectedItemsOfBatchToWorkbook}" reRender="saveMassageInUp,UpImportSelectedItemsToworkbook,UpStoredWBid" 
+	     				onclick="document.getElementById('batchReviewForm:saveMassageInUp').style.display = 'none';document.getElementById('batchReviewForm:addNewWrkBookMesInUp').style.display = 'none';this.disabled=true" disabled="#{!sessionUtilBean.enableCommandButton}"/>
+				 		<rich:spacer width="20px"></rich:spacer>
+				 	</td>
+				 	</a4j:outputPanel>
+				 	<td>
+				 		<a4j:outputPanel id="inUpdateActionPanel">
+							<h:commandButton id="inUpdateExport" value="#{localeValue.exportAllUpdateItemsInBatch}"  action="#{dataSyncAction.exportImportBatchItemsInfo}" 
+							rendered="#{!sessionUtilBean.importedBatchInfoExportStatusInfo.showCancelButton}">
+							</h:commandButton>
+							 
+							 <a4j:commandButton id="inUpdateCancel" value="#{localeValue.cancleExport}"  action="#{exportAction.cancelExport}" 
+							 rendered="#{sessionUtilBean.importedBatchInfoExportStatusInfo.showCancelButton}" reRender="inUpdateActionPanel">
+							 <a4j:actionparam name="exportOf" value="Import Batch Items" assignTo="#{exportAction.exportOf}"/>
+							 </a4j:commandButton>
+						  <rich:spacer width="20 px"/>
+						 	<span id="downCanlinksInUp">
+								 <h:commandButton id="inUpdateDownloadLink" title="#{localeValue.downloadLink}" action="#{exportAction.downLoadExportedFile}"
+								 		rendered="#{sessionUtilBean.importedBatchInfoExportStatusInfo.enableDownloadLink}" image="/images/small/downloadDataFromExternalSystem.png"
+								 		onclick="document.getElementById('downCanlinksInUp').style.display = 'none';">
+								 		<a4j:actionparam name="exportOf" value="Import Batch Items" assignTo="#{exportAction.exportOf}"/>
+								 </h:commandButton>
+								 <rich:spacer width="20 px"/>
+								 <a4j:commandButton id="inUpdateCancelLink" title="#{localeValue.cancelLink}" action="#{exportAction.cancelDownload}"  
+									 rendered="#{sessionUtilBean.importedBatchInfoExportStatusInfo.enableDownloadLink}" image="/images/small/rejectBatch.png" reRender="inUpdateActionPanel">
+									 <a4j:actionparam name="exportOf" value="Import Batch Items" assignTo="#{exportAction.exportOf}"/>
+								</a4j:commandButton>
+							</span>
+				 			<div class="clear"></div>
+							<h:outputText value="#{exportAction.saveMessage}" style="color:#{exportAction.messageColor};" id="inUpdateSaveMessageId" escape="false"/>
+						</a4j:outputPanel>
+				 	</td>
+				</tr>
+				</table>				
+
+			    <br/>
+		<div class="float-right">	 	
+      	<table>
+       		<tr>
+       			<ui:remove>
+					<td>
+						<h:outputText value="#{localeValue.useCategoryMapping} : " />		
+					</td>
+					<td>
+						<h:selectBooleanCheckbox value="#{sessionUtilBean.useCtgMapping}" id="compareWithESCtg2"/>	
+					</td>
+       			</ui:remove>
+		   		<td>
+		   			 <a4j:commandButton value="#{localeValue.deleteSelectedItems}" id="del4" action="#{dataSyncAction.deleteSelectedItems}" reRender="reviewId,mesgId,countVal,newItemsListTableId,duplicateItemsListTableId,updateItemsListTableId,remainRD,cth" 
+		                       onclick="showProcessText()" oncomplete="hideProcessText()">
+		       		</a4j:commandButton>
+		       		<rich:spacer width="20px"></rich:spacer>	
+		   		</td>
+		   		<td>
+		   			 <a4j:commandButton action="#{dataSyncAction.selectItemInfo}" value="#{localeValue.acceptSelectItemsToMoveProd}" title="#{localeValue.acceptSelectItemsToMoveProd}" id="acp24" disabled="#{!sessionUtilBean.enableCommandButton || sessionUtilBean.selectedItemApproveProcessInfo.pollEnabled}"
+				                    reRender="reviewId,mesgId,itemInfoPanelId,delstg,setOv,extBatchId,newItemsListTableId,duplicateItemsListTableId,countVal,updateItemsListTableId"  oncomplete="#{rich:component('itemInfoPanelId')}.show();" rendered="#{extSysBatch}">
+			 		 </a4j:commandButton>
+		   		</td>
+		   		<td>
+		   			<a4j:commandButton action="#{dataImportActionBean.setItemInfoSlectedInfoForCimmBatchItem}" value="#{localeValue.acceptSelectItemsToMoveProd}" title="#{localeValue.acceptSelectItemsToMoveProd}" id="acpCimm24" disabled="#{!sessionUtilBean.enableCommandButton || sessionUtilBean.selectedItemApproveProcessInfo.pollEnabled}"
+				                    reRender="reviewId,mesgId,itemInfoPanelId,delstg,setOv,extBatchId,newItemsListTableId,duplicateItemsListTableId,countVal,updateItemsListTableId"  oncomplete="#{rich:component('itemInfoPanelId')}.show();" rendered="#{cimmBatch}"/>
+		   			<rich:spacer width="20px"></rich:spacer>
+		   		</td>
+		   		<td>
+		   			<a4j:commandButton action="#{dataSyncAction.selectItemInfo}" value="#{localeValue.approveAllUpdateItemsInTab}" title="#{localeValue.approveAllUpdateItemsInTab}" id="allItemsInTabApprID3" disabled="#{!sessionUtilBean.enableCommandButton || sessionUtilBean.selectedItemApproveProcessInfo.pollEnabled}"
+				                    reRender="reviewId,mesgId,itemInfoPanelId,delstg,setOv,extBatchId,newItemsListTableId,duplicateItemsListTableId,countVal,"  oncomplete="#{rich:component('itemInfoPanelId')}.show();" rendered="#{extSysBatch}">
+				                    <a4j:actionparam name="UPDATE_ITEMS_PAGE_LIST" value="true" assignTo="#{sessionUtilBean.fromButtonToApproveAllItemsInTab}"/>
+				    </a4j:commandButton>
+		   		</td>
+		   		<td>
+		   			<a4j:commandButton action="#{dataImportActionBean.setItemInfoSlectedInfoForCimmBatchItem}" value="#{localeValue.approveAllUpdateItemsInTab}" title="#{localeValue.approveAllUpdateItemsInTab}" id="allItemsInTabApprID31" disabled="#{!sessionUtilBean.enableCommandButton || sessionUtilBean.selectedItemApproveProcessInfo.pollEnabled}"
+				                    reRender="reviewId,mesgId,itemInfoPanelId,delstg,setOv,extBatchId,newItemsListTableId,duplicateItemsListTableId,countVal,"  oncomplete="#{rich:component('itemInfoPanelId')}.show();" rendered="#{cimmBatch}">
+		   							 <a4j:actionparam name="UPDATE_ITEMS_PAGE_LIST" value="true" assignTo="#{sessionUtilBean.fromButtonToApproveAllItemsInTab}"/>
+		   			</a4j:commandButton>
+		   		</td>
+		   	</tr>
+		   	 </table>
+		   	 </div>
+			<div class="cimm_formLabel float-left">
+				<h:outputText value="#{localeValue.useCategoryMapping}  " />								
+				<h:selectBooleanCheckbox value="#{sessionUtilBean.useCtgMapping}" id="compareWithESCtg2"/>	
+				<rich:spacer width="30px"></rich:spacer>
+			</div>			   				  
+		   <div class="float-left" style="margin-top:-10px;">
+			<a4j:region id="filterId2">
+				<div class="cimm_formLabel">
+					<h:outputText value="#{localeValue.compreItemsExist}  " /><br/>
+					<h:selectOneMenu id="compareOnId2" value="#{sessionUtilBean.compareOn}" style="width:340px;" >
+						<f:selectItem id="cmpOnpartNumberId2" itemLabel="#{localeValue.partNo}" itemValue="1" />
+						<f:selectItem id="cmpOnPnMnId2" itemLabel="#{localeValue.PartNumberManufacturerName}" itemValue="4" />
+						<f:selectItem id="cmpOnmanufacturerPartNumberId2" itemLabel="#{localeValue.ManufacturerNameManufacturerPartNo}" itemValue="2" />
+				  		<f:selectItem id="cmpOnupcId2" itemLabel="#{localeValue.upc}" itemValue="3" />
+				  		<f:selectItem id="cmpOnItemId2" itemLabel="#{localeValue.itemId}" itemValue="5"/>
+				  		<f:selectItem id="cmpOnESItemId2" itemLabel="#{localeValue.esitemId}" itemValue="6" itemDisabled="#{cimmBatch}"/>
+				  		<a4j:support event="onchange" action="#{dataSyncAction.loadBatchItemsBasedOn}"   onsubmit="showLoadingText()" oncomplete="hideLoadingText()" 
+				  		             reRender="updateItemsListTableId,pgnationIDForRB,countVal,UpImportAllItemsToworkbook,UpImportSelectedItemsToworkbook,acp24,acpCimm24,allItemsInTabApprID3,allItemsInTabApprID31" >
+							<a4j:actionparam name="updatedItems" value="Update Items" assignTo="#{dataSyncAction.selectedTab}"/>
+						</a4j:support>
+				  	</h:selectOneMenu>
+				  	<span id="loadStatusId"   style="color:#E86206;display:none;"></span>
+				  </div>
+  			</a4j:region>
+  			</div>
+  			<div class="clear"></div><br/>
+  			<div class="tableLayout">
+			<h:form id="form">
+        		<h:panelGrid columns="2"  >      		
+            		<rich:panel style="float:left;">
+                		<f:facet name="header">
+                    		<h:outputText value="New updates received" />
+                		</f:facet>
+						<div class="scrollbar">
+					<rich:tree style="width:300px" nodeSelectListener="#{fieldTreeBean.processSelection}"
+               				   reRender="selectedNode"  
+                 			   binding="#{fieldTreeBean.fieldTreeBinding}"
+							   value="#{fieldTreeBean.treeNode}" var="item" ajaxKeys="#{null}">
+            		</rich:tree>
+						</div>
+					</rich:panel>
+		
+			<div class="cimmReviewBatchDataTable" style="float:right;">
+		<rich:dataTable value="#{dataSyncAction.reviewBatchList}" binding="#{dataSyncAction.updateItemsListInBatchTable}" var = "batch" id = "updateItemsListTableId">
+  				<rich:column>
+  					<div style="whit-space:nowrap;">
+						<f:facet name="header">
+							<h:outputText value="#{localeValue.action}" id="Act1" />
+						</f:facet>
+						<a4j:commandButton action="#{dataSyncAction.compareItemList}" value="#{localeValue.compareItems}" title="#{localeValue.compareItems}" id="cmpid1" styleClass="actionIcon" image="/images/small/compareIteems.png"
+						                   oncomplete="#{rich:component('compareItems')}.show();" reRender="cmpid,compareItems,pbHidden" >
+					    </a4j:commandButton>
+					    <rich:spacer width="10px"></rich:spacer>
+						<a4j:commandButton action="#{dataSyncAction.selectItemInfo}" value="#{localeValue.acceptAndMoveToProd}" title="#{localeValue.acceptAndMoveToProduction}" id="acp1" styleClass="actionIcon" image="/images/small/acceptAndMoveToProduction.png"
+						                    reRender="updateItemsListTableId,mesgId,itemInfoPanelId,delstg,same,pbHidden,compareOnHiddenId,countVal"  oncomplete="#{rich:component('itemInfoPanelId')}.show();" rendered="#{extSysBatch}">
+						   <a4j:actionparam name="aprvAll" value="approveOne" assignTo="#{dataSyncAction.approveoneRec}" ></a4j:actionparam>                
+					    </a4j:commandButton>
+					    
+					    <a4j:commandButton action="#{dataImportActionBean.setItemInfoSlectedInfoForCimmBatchItem}" value="#{localeValue.acceptAndMoveToProd}" title="#{localeValue.acceptAndMoveToProduction}" id="acpCimm" disabled="#{sessionUtilBean.selectedItemApproveProcessInfo.pollEnabled}"
+						                    reRender="updateItemsListTableId,mesgId,itemInfoPanelId,delstg,same,pbHidden,compareOnHiddenId,countVal"  oncomplete="#{rich:component('itemInfoPanelId')}.show();" rendered="#{cimmBatch}" styleClass="actionIcon" image="/images/small/acceptAndMoveToProduction.png">
+						   <a4j:actionparam name="aprvAll" value="approveOne" assignTo="#{dataSyncAction.approveoneRec}" ></a4j:actionparam>                
+					    </a4j:commandButton>
+					</div>				
+				</rich:column>
+  				<rich:column>
+  					<div class="align-center">
+						<f:facet name="header">
+							<h:selectBooleanCheckbox value="#{dataSyncAction.itemSelectAll}"  id="SALL1"  label="#{localeValue.selectAll}">
+								<a4j:support event="onclick" action="#{dataSyncAction.selectAllItemsInList}" reRender="updateItemsListTableId,mesgId"> 
+								</a4j:support>						
+							</h:selectBooleanCheckbox>					
+						</f:facet>
+						<h:selectBooleanCheckbox value="#{batch.selected}"  id="ITMSLCT1">
+							<a4j:support event="onclick" reRender="mesgId"/>
+						</h:selectBooleanCheckbox>
+					</div>
+				</rich:column>
+		       	<rich:column>
+		       		<f:facet name="header">
+		       			<h:outputText value="#{localeValue.stgItemId}" />
+		       		</f:facet>
+		       		<h:outputText value="#{batch.cneStgItemId}" />
+		       	</rich:column>
+		       	<rich:column>
+		       		<f:facet name="header">
+		       			<h:outputText value="#{localeValue.partNumber}" />
+		       		</f:facet>
+		       		<h:outputText value="#{batch.partNumber}" />
+		       	</rich:column>
+		       	<rich:column>
+		       		<f:facet name="header">
+		       			<h:outputText value="#{localeValue.mfrPartNum}" />
+		       		</f:facet>
+		       		<h:outputText value="#{batch.manufacturerPartNumber}" />
+		       	</rich:column>
+		       	<rich:column>
+		       		<f:facet name="header">
+		       			<h:outputText value="#{localeValue.upc}" />
+		       		</f:facet>
+		       		<h:outputText value="#{batch.upc}" />
+		       	</rich:column>
+		       	<rich:column>
+		       		<f:facet name="header">
+		       			<h:outputText value="#{localeValue.mfrBrandName}" />
+		       		</f:facet>
+		       		<h:outputText value="#{batch.manufacturerName} / #{batch.brandName}" />
+		       	</rich:column>
+		       	<rich:column rendered="#{!sessionUtilBean.cimmOrExternalSysBatch.useEsMfrBrandName}">
+		       		<f:facet name="header">
+		       			<h:outputText value="ExtSysManufacturer/ExtSysBrand Name" />
+		       		</f:facet>
+		       		<h:outputText value="#{batch.manufacturerNameExt} / #{batch.brandNameExt}" />
+		       	</rich:column>
+		       	<rich:column>
+		       		<f:facet name="header">
+		       			<h:outputText value="#{localeValue.listPrice}" />
+		       		</f:facet>
+		       		<h:outputText value="#{batch.listPrice}"/>
+		       	</rich:column>
+		       	<rich:column>
+		       		<f:facet name="header">
+		       			<h:outputText value="#{localeValue.shortDesc}" />
+		       		</f:facet>
+		       		<h:outputText value="#{batch.shortDesc}" />
+		       	</rich:column>       		       	
+  			</rich:dataTable> 			
+  			</div>
+  		  </h:panelGrid>
+  		</h:form>
+  			
+  		</div>
+</html>
