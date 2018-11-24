@@ -1,0 +1,1246 @@
+#if($LayoutName=="StaticPage" || $LayoutName=="StaticPageFullPageLayout")
+#if($!isStaticHomePage!="Y")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $!pageTitle
+  </li>
+</ul>
+#end
+#end
+<!-- #if($LayoutName=="LoginPage")
+<ul class="cimm_breadcrumbs">
+<li><a href="$locale.get('website.url.Welcome')"><i class="fa fa-home" aria-hidden="true"></i></a><span class="breadcrumbArrows"></span></li>
+<li>$locale.get("product.heading.login")</li>
+</ul>
+#end -->
+#if($LayoutName=="ForgotPasswordPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.retrievePassword")
+  </li>
+</ul>
+#end
+#if($LayoutName=="PrintInvoicesPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href='$locale.get("website.url.OrderHistory")'>
+      $locale.get("product.header.CompletedOrders")
+    </a>
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.button.printInvoices")
+  </li>
+</ul>
+#if($orderHistoryDetailList.size() > 0)
+<div class="cimm_pageTitle">
+  <div class="cimm_groupTitle">
+    <h2 class="cimm_pageTitle">
+      $locale.get("product.heading.InvoiceList")
+    </h2>
+  </div>
+  <div class="cimm_groupManipulate">
+    <a href="javascript:void(0);" onclick="printInvoices();">
+      <i class="fa fa-lg fa-print">
+      </i>
+      $locale.get('product.button.printInvoices')
+    </a>
+  </div>
+  <div class="clear">
+  </div>
+</div>
+#else
+<h2 class="cimm_pageTitle">
+  $locale.get("print.heading.Noinvoices")
+</h2>
+#end
+#end
+<!-- #if($LayoutName=="ShipEntityPage")
+<h2 class="cimm_pageTitle">$locale.get("product.heading.SelectShippingToProceed")</h2>
+#end -->
+#if($LayoutName=="AdvancedForgotPassword")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.resetPassword")
+  </li>
+</ul>
+#end
+#if($LayoutName=="EventRegisterPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="/eventsUnit.action">
+      $locale.get("product.heading.eventsAndClasses") 
+    </a>
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("form.label.eventregister")
+  </li>
+</ul>
+#end
+#if($LayoutName=="SendThisPageForAll1")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.button.sendthispage")
+  </li>
+</ul>
+#end
+#if($LayoutName=="BranchLocationPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.label.locations")
+  </li>
+</ul>
+<h2 class="cimm_pageTitle">
+  $locale.get("product.label.locations")
+</h2>
+#end
+#if($LayoutName=="RegisterPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.register")
+  </li>
+</ul>
+#end
+#if($LayoutName=="DashBoardPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="Dashboard">
+      $locale.get("product.heading.accountDashBoard")
+    </a>
+  </li>
+</ul>
+#end
+#if($LayoutName=="ChangePasswordPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.changePassword")
+  </li>
+</ul>
+#end
+<!-- #if($LayoutName=="ForgotPasswordPage")
+<ul class="cimm_breadcrumbs">
+<li><a href="$locale.get('website.url.Welcome')"><i class="fa fa-home" aria-hidden="true"></i></a><span class="breadcrumbArrows"></span></li>
+<li>$locale.get("product.heading.retrievePassword")</li>
+</ul>
+#end -->
+#if($LayoutName=="NewShippingAddressPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="$locale.get('website.url.EditContactInfo')">
+      $locale.get("product.heading.editContactInfo")
+    </a>
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.heading.addNewShipAddress")
+  </li>
+</ul>
+#end
+#if($LayoutName=="AddresssesPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="Dashboard">
+      $locale.get("product.heading.accountDashBoard")
+    </a>
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.heading.userInformation")
+  </li>
+</ul>
+<h2 class="cimm_pageTitle">
+  $locale.get("product.heading.userInformation")
+</h2>
+#end
+#if($LayoutName=="EditAddressPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="$locale.get('website.url.EditContactInfo')">
+      $locale.get("product.heading.editContactInfo")
+    </a>
+  </li>
+  #if($type && $type=='bill')
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.heading.billingAddress")
+  </li>
+  #end
+  #if($type && $type=='ship')
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.heading.shippingAddress")
+  </li>
+  #end 
+</ul>
+#end
+#if($LayoutName=="EditContactPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="Dashboard">
+      $locale.get("product.heading.accountDashBoard")
+    </a>
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.heading.editContactInfo")
+  </li>
+</ul>
+#end
+#if($LayoutName=="OpenOrdersPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.openOrders")
+  </li>
+</ul>
+#end
+#if($LayoutName=="openQuotesPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.openQuotes")
+  </li>
+</ul>
+<h2 class="cimm_pageTitle">
+  $locale.get("product.heading.openQuotes")
+</h2>
+#end
+#if($LayoutName=="OrderHistoryPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="Dashboard">
+      $locale.get("product.heading.accountDashBoard")
+    </a>
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.heading.orderHistory")
+  </li>
+</ul>
+#end
+#if($LayoutName=="OrderDetailPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  #if($requestType && $requestType=="openQuote")
+  <li>
+    <span class="landingLink">
+      #if($session.getAttribute("erpType") == "eclipse") #if($orderDetail.orderNum) $locale.get("product.label.orderNumber") $orderDetail.orderNum #end #end
+    </span>
+  </li>
+  #else
+  <li>
+    <a href="Dashboard">
+      $locale.get("product.heading.accountDashBoard")
+    </a>
+  </li>
+  #if($orderStatus && $orderStatus=="New")
+  <li>
+    <span class="breadcrumbArrows">
+      >
+    </span>
+    <a href="OpenOrderSale.action?reqType=webOrder&orderStatus=New">
+      $locale.get("product.heading.openOrders")
+    </a>
+  </li>
+  #end
+  #if($orderStatus && $orderStatus=="History")
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    <a href="$locale.get('website.url.OrderHistory')">
+      $locale.get("product.header.CompletedOrders")
+    </a>
+  </li>
+  #end
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    <span class="landingLink">
+      #if($session.getAttribute("erpType") == "eclipse") #if($orderDetail.orderNum) $locale.get("product.label.orderNumber") $orderDetail.orderNum #end #end
+    </span>
+  </li>
+  #end
+</ul>
+#end
+#if($LayoutName=="CartPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.myShoppingCart")
+  </li>
+</ul>
+#end
+#if($LayoutName=="OciListDisplay")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.label.PunchOutList")
+  </li>
+</ul>
+<h2 class="cimm_pageTitle">
+  $locale.get("product.label.PunchOutList")
+</h2>
+#end
+#if($LayoutName=="PunchoutListDisplay")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.label.PunchOutList")
+  </li>
+</ul>
+<h2 class="cimm_pageTitle">
+  $locale.get("product.label.PunchOutList")
+</h2>
+#end
+#if($LayoutName=="ReorderCartPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.reOrderCart")
+  </li>
+</ul>
+<!-- <h2 class="cimm_pageTitle">$locale.get("product.heading.reOrderCart")</h2> -->
+#end
+#if($LayoutName=="SavedGroupsPage")
+#if($responseType!="ApprovedCart")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.myGroups")
+  </li>
+</ul>
+#end
+<!-- #if($responseType=="ProductGroupList")
+<ul class="cimm_breadcrumbs">
+<li><a href="$locale.get('website.url.Welcome')"><i class="fa fa-home" aria-hidden="true"></i></a><span class="breadcrumbArrows"></span></li>
+<li><a href="Dashboard">$locale.get("product.heading.accountDashBoard")</a></li>
+<li><span class="breadcrumbArrows"></span>$locale.get("product.heading.myProductGroups")</li>
+</ul>
+#end
+#if($responseType=="CartGroupList")   
+<ul class="cimm_breadcrumbs">
+<li><a href="$locale.get('website.url.Welcome')"><i class="fa fa-home" aria-hidden="true"></i></a><span class="breadcrumbArrows"></span></li>
+<li><a href="Dashboard">$locale.get("product.heading.accountDashBoard")</a></li>
+#if($isShared!="Y")
+<li><span class="breadcrumbArrows"></span>$locale.get("product.heading.mySavedCart")</li>
+#else
+<li><span class="breadcrumbArrows"></span>$locale.get("product.heading.sharedCart")</li>
+#end
+</ul>
+#end -->
+#if($responseType=="ApprovedCart")                            
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="Dashboard">
+      $locale.get("product.heading.accountDashBoard")
+    </a>
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.heading.approvalCartList")
+  </li>
+</ul>
+#end
+#end
+#if($LayoutName=="ProductGroupPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="Dashboard">
+      $locale.get("product.heading.accountDashBoard")
+    </a>
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    <a href="/SavedGroups/Products">
+      $locale.get("product.heading.productGroup")
+    </a>
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    <span>
+      $savedGroupName
+    </span>
+  </li>
+</ul>
+#end
+#if($LayoutName=="SavedCartPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="Dashboard">
+      $locale.get("product.heading.accountDashBoard")
+    </a>
+  </li>
+  #if($isShared!="Y")
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    <a href="/SavedGroups/Cart">
+      $locale.get("product.heading.mySavedCart")
+    </a>
+  </li>
+  #else
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.heading.sharedCart")
+  </li>
+  #end
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    <span>
+      $savedGroupName
+    </span>
+  </li>
+</ul>
+#end
+#if($LayoutName=="ApproveCart")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.approvedCart")
+  </li>
+</ul>
+#end
+#if($LayoutName=="RequestForQuotePage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="Dashboard">
+      $locale.get("product.heading.accountDashBoard")
+    </a>
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.heading.requestForQuote")
+  </li>
+</ul>
+#end
+#if($LayoutName=="QuickOrderStdPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="Dashboard">
+      $locale.get("product.heading.accountDashBoard")
+    </a>
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.heading.quickOrder")
+  </li>
+</ul>
+#end
+#if($LayoutName=="QuickOrderFileUpload")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="Dashboard">
+      $locale.get("product.heading.accountDashBoard")
+    </a>
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.heading.cartFileUpload")
+  </li>
+</ul>
+<h2 class="cimm_pageTitle">
+  $locale.get("quickOrder.label.loadYourShoppingList")
+</h2>
+#end
+#if($LayoutName=="AddNewCreditCard")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.addNewCreditCard")
+  </li>
+</ul>
+#end
+#if($LayoutName=="CheckOutPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.checkout")
+  </li>
+</ul>
+#end
+#if($LayoutName=="GuestCheckoutPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.checkout")
+  </li>
+</ul>
+<h2 class="cimm_pageTitle">
+  $locale.get("product.heading.checkout")
+</h2>
+#end
+#if($LayoutName=="ConfirmOrderPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.confirmOrder")
+  </li>
+</ul>
+#end
+#if($LayoutName=="OrderConfirmation")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.orderConfirmation")
+  </li>
+</ul>
+#end
+#if($LayoutName=="ManagePurchaseAgentPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.managePurchasingAgent")
+  </li>
+</ul>
+#end
+#if($LayoutName=="DisablePurchaseAgentPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.disablePurchasingAgent")
+  </li>
+</ul>
+#end
+#if($LayoutName=="AddNewPurchaseAgentPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.addNewPurchasingAgent")
+  </li>
+</ul>
+#end
+#if($LayoutName=="PurchaseAgentDetailPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.userInformation")
+  </li>
+</ul>
+#end
+#if($LayoutName=="CheckOutQuotePage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.checkout")
+  </li>
+</ul>
+#end
+#if($LayoutName=="CreditCardDetail")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.checkoutWithCreditCard")
+  </li>
+</ul>
+#end
+#if($LayoutName=="NewCardAuthentication")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.addNewCreditCard")
+  </li>
+</ul>
+#end
+#if($LayoutName=="AdvancedSearch")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.advancedSearch")
+  </li>
+</ul>
+#end
+#if($LayoutName=="CalendarEventsPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.events")
+  </li>
+</ul>
+<h2 class="cimm_pageTitle">
+  $locale.get("product.heading.events")
+</h2>
+#end
+#if($LayoutName=="EventDetailPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="/eventsUnit.action">
+      $locale.get("product.heading.eventsAndClasses") 
+    </a>
+  </li>
+  #if($!eventsList.title)
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $!eventsList.title
+  </li>
+  #end
+</ul>
+#end
+#if($LayoutName=="EventsPage")
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.eventsAndClasses")
+  </li>
+</ul>
+#end
+#if($LayoutName=="ComparePage")
+<ul class="cimm_breadcrumbs">
+  <!-- <li><a href="$locale.get('website.url.Welcome')"><i class="fa fa-home" aria-hidden="true"></i></a><span class="breadcrumbArrows"></span></li> -->
+  <li>
+    $locale.get("product.label.productCompare")
+  </li>
+</ul>
+#end
+#if($LayoutName=="ProductPage" || $LayoutName=="SubCategoryPage")
+#set( $listPageHeading = "")
+#set( $pageTitleBreadCrumbFirst = "" )
+#set( $pageTitleBreadCrumbLast = "" )
+#set($finalPageTitle = "" )
+#if($breadCrumbList)
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="$locale.get('website.url.ProductCategory')">
+      $locale.get("product.heading.products")
+    </a>
+  </li>
+  #set( $breadCrumbSize = $breadCrumbList.size() )
+  #set( $breadCrumbIdx = 1 )
+  #foreach($breadCrumb in $breadCrumbList)
+  #if($breadCrumbIdx == $breadCrumbSize)
+  #set( $listPageHeading = $breadCrumb.categoryName)
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $breadCrumb.categoryName
+  </li>
+  #else
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    <a href="$breadCrumb.categoryCode$locale.get('website.url.ProductCategoryLevel')$breadCrumb.categoryName.replaceAll(' ','-')">
+      $breadCrumb.categoryName
+    </a>
+  </li>
+  #set( $pageTitleBreadCrumbFirst = $pageTitleBreadCrumbFirst+" "+ $breadCrumb.categoryName)
+  #end
+  #set( $pageTitleBreadCrumbLast = $listPageHeading )
+  #set( $breadCrumbIdx = $breadCrumbIdx+1 )
+  #if($!pageTitleBreadCrumbFirst && $pageTitleBreadCrumbFirst!='')
+  #set ( $finalPageTitle = $pageTitleBreadCrumbFirst + " - " + $pageTitleBreadCrumbLast)
+  #else
+  #set ( $finalPageTitle =$pageTitleBreadCrumbLast)
+  #end
+  #end
+</ul>
+#else
+<div class="clear">
+</div>
+<ul class="cimm_breadcrumbs">
+  <li>
+    $locale.get("product.heading.products")
+  </li>
+</ul>
+#end
+<!-- <h2 class="cimm_pageTitle">#if($listPageHeading && $listPageHeading.trim().length()>0) $listPageHeading #else $locale.get("product.heading.products") #end</h2> -->
+#end
+#if($LayoutName=="ProductList")
+#if($breadCrumbList)
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="$locale.get('website.url.ProductCategory')">
+      $locale.get("product.heading.products")
+    </a>
+  </li>
+  #if($navigationType=='BRAND')
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    <a href="$locale.get('website.url.Brands')">
+      $locale.get("product.heading.shopByBrands")
+    </a>
+  </li>
+  #end
+  #if($navigationType=='MANF')
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    <a href="ManufacturerLink.action">
+      $locale.get("navigation.label.shopBymanufacturer")
+    </a>
+  </li>
+  #end
+  #set( $breadCrumbSize = $breadCrumbList.size() )
+  #set( $breadCrumbIdx = 1 )
+  #set( $LastSet = "" )
+  #set( $FirstSet = "" )
+  #set( $FirstSetCode = "" )
+  #set( $pageTitleBreadCrumbLast = "" )
+  #set( $pageTitleBreadCrumbFirst = "" )
+  #set( $finalPageTitle = "" )
+  #set( $shopByBrand = "" )
+  #foreach($breadCrumb in $breadCrumbList)
+  #if($navigationType=='BRAND')
+  #if($breadCrumbIdx == $breadCrumbSize)
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $breadCrumb.categoryName
+  </li>
+  #set( $LastSet = $breadCrumb.categoryName )
+  #end
+  #elseif($navigationType=='MANF')
+  #if($breadCrumbIdx == $breadCrumbSize)
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $breadCrumb.categoryName
+  </li>
+  #set( $LastSet = $breadCrumb.categoryName )
+  #end
+  #else
+  #if($breadCrumbIdx == $breadCrumbSize)
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $breadCrumb.categoryName
+  </li>
+  #set( $LastSet = $breadCrumb.categoryName )
+  #else
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    <a href="$breadCrumb.categoryCode$locale.get('website.url.ProductCategoryLevel')$breadCrumb.categoryName.replaceAll(' ','-')">
+      $breadCrumb.categoryName
+    </a>
+  </li>
+  #set( $FirstSet = $breadCrumb.categoryName)
+  #set( $FirstSetCode = $breadCrumb.categoryCode )
+  #set( $pageTitleBreadCrumbFirst = $pageTitleBreadCrumbFirst+" "+ $breadCrumb.categoryName)
+  #end
+  #end
+  #set( $pageTitleBreadCrumbLast = $LastSet )                     
+  #set( $breadCrumbIdx = $breadCrumbIdx+1)
+  #set ( $finalPageTitle = $pageTitleBreadCrumbFirst + " - " + $pageTitleBreadCrumbLast)
+  #end
+</ul>
+#end
+#end
+#if($LayoutName=='ProductDetailPage')
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    <a href="$locale.get('website.url.ProductCategory')">
+      $locale.get("product.heading.products")
+    </a>
+  </li>
+  #if($breadCrumbList && $breadCrumbList.size()>0)
+  #set( $breadCrumbSize = $breadCrumbList.size() )
+  #set( $breadCrumbIdx = 1 )
+  #foreach($breadCrumb in $breadCrumbList)
+  #if($breadCrumbIdx == $breadCrumbSize)
+  <li>
+    #if($breadCrumb.categoryName)
+    <span class="breadcrumbArrows">
+    </span>
+    $breadCrumb.categoryName
+    #else
+    <span class="breadcrumbArrows">
+    </span>
+    $!itemData.manufacturerPartNumber
+    #end 
+  </li>
+  #else
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    <a href="$breadCrumb.categoryCode$locale.get('website.url.ProductCategoryLevel')$breadCrumb.categoryName.replaceAll(' ','-')">
+      $breadCrumb.categoryName
+    </a>
+  </li>
+  #end
+  #set( $breadCrumbIdx = $breadCrumbIdx+1)
+  #end
+  #else
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    <a href='$locale.get("website.url.ProductCategory")'>
+      $locale.get("product.heading.products")
+    </a>
+  </li>
+  #end
+</ul>
+#end
+#if($LayoutName=='BrandPage')
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.shopByBrands")
+  </li>
+</ul>
+#end
+#if($LayoutName=='ManufacturerPage')
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("navigation.label.shopBymanufacturer")
+  </li>
+</ul>
+#end
+#if($LayoutName=='SendThisPage')
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li id="prodName">
+  </li>
+  <li>
+    <span class="breadcrumbArrows">
+    </span>
+    $locale.get("product.heading.share")
+  </li>
+</ul>
+<h2 class="cimm_pageTitle">
+  $locale.get("product.heading.sendProduct")
+</h2>
+#end
+#if($LayoutName=='ShoppingListLoader')
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.cartFileUpload")
+  </li>
+</ul>
+<h2 class="cimm_pageTitle">
+  $locale.get("quickOrder.label.loadYourShoppingList")
+</h2>
+#end
+#if($LayoutName=='ShoppingListLoaderResultPage')
+<ul class="cimm_breadcrumbs">
+  <li>
+    <a href="$locale.get('website.url.Welcome')">
+      <i class="fa fa-home" aria-hidden="true">
+      </i>
+    </a>
+    <span class="breadcrumbArrows">
+    </span>
+  </li>
+  <li>
+    $locale.get("product.heading.fileUploadResult")
+  </li>
+</ul>
+<h2 class="cimm_pageTitle">
+  $locale.get("product.heading.fileUploadResult")
+</h2>
+#end
